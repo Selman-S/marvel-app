@@ -4,7 +4,7 @@ import { fetchFromMarvel } from '../../utils/marvelApi';
 import CharacterCard from '../CharacterCard';
 import Grid from '@mui/material/Grid';
 import { Character } from '../../types/types';
-import { data } from '../../utils/mockData';
+import { characters as char} from '../../utils/mockData';
 
 const CharacterList = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -13,8 +13,8 @@ const CharacterList = () => {
       // const results = await fetchFromMarvel('characters');
       // setCharacters(results);
       // console.log(results);
-      console.log(data.data.results);
-      setCharacters(data.data.results.map((result: any) => ({
+      console.log(char.data.results);
+      setCharacters(char.data.results.map((result: any) => ({
         ...result,
         comics: {
           ...result.comics,
