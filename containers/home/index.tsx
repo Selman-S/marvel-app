@@ -5,12 +5,12 @@ import React from 'react'
 
 const HomeContainer = () => {
   return (
-    <>
+    <div >
 
-    <Feature />
-    <CharacterList /> 
+      <Feature />
+      <CharacterList />
 
-      </>
+    </div>
   )
 }
 

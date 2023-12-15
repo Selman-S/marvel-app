@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Character } from '../../types/types'; // Assuming you have a Character type defined
+import Image from 'next/image';
 
 interface CharacterCardProps {
   character: Character;
@@ -14,16 +15,17 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
   return (
     <Card sx={{ maxWidth: 345, m: 2 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+        <Image
+          width={350}
+          height={200}
+          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
+          className='h-80'
         />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
+        <CardContent className='bg-red text-white ' >
+          <div>
             {character.name}
-          </Typography>
+          </div>
           {/* You can add more character details here */}
         </CardContent>
       </CardActionArea>

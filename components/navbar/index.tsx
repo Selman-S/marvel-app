@@ -7,13 +7,13 @@ import Button from '@mui/material/Button';
 
 const NavBar: React.FC = () => {
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" sx={{ backgroundColor: 'var(--red)', fontFamily: 'var(--font-familyOrbitron)' }}>
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontFamily: 'var(--font-familyOrbitron)' }}>
           Marvel Universe
         </Typography>
         <Link href="/" passHref>
-          <Button color="inherit">Home</Button>
+          <Button color="inherit" sx={{ fontFamily: 'var(--font-familyOrbitron)' }}>Home</Button>
         </Link>
         {/* Add more navigation links here */}
       </Toolbar>
