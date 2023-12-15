@@ -17,6 +17,9 @@ const config: Config = {
       colors: {
         'marvel-red': '#ec1d24',
       },
+      backgroundColor: {
+        'marvel-red': '#ec1d24',
+      },
       
     },
     fontFamily: {
