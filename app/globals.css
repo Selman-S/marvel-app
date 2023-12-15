@@ -9,7 +9,10 @@
   --font-family1: 'Silkscreen', sans-serif;
   --font-familyOrbitron: 'Orbitron', sans-serif;
 }
+.quote::after, .quote::before {
 
+  content: '\0022'; 
+}
 /* * {
   margin: 0;
   padding: 0;

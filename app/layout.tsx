@@ -23,10 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={orbitron.className} style={{ backgroundImage: `url(/images/marvel_bg.jpg)` }}>
+      <body className={`${orbitron.className} bg-no-repeat bg-marvel-red bg-contain `} >
         <CssBaseline />
         <NavBar />
-        <div className='mt-16 container flex justify-center  mx-auto '>
+        <div className=' '>
 
           <AppRouterCacheProvider >{children}</AppRouterCacheProvider>
         </div>

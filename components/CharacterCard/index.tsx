@@ -22,7 +22,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
           alt={character.name}
           className='h-80'
         />
-        <CardContent className='bg-red text-white ' >
+        <CardContent className='bg-marvel-red text-white ' >
           <div>
             {character.name}
           </div>
