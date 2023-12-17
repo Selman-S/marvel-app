@@ -5,8 +5,10 @@ import { fetchFromMarvel } from '@/service/getCharacters';
 import React, { useEffect, useState } from 'react';
 import { character as char } from '../../../utils/mockData'
 import Image from 'next/image';
-import { Skeleton } from '@mui/material';
+import { Box, Grid, Skeleton } from '@mui/material';
 import { fetchComics } from './../../../service/getComics';
+import { Comic } from '@/types/comic';
+import ComicCard from '@/components/comicCard/comicCard';
 
 interface PageProps {
   params: {
@@ -16,7 +18,7 @@ interface PageProps {
 
 const page = ({ params }: PageProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [comics, setComics] = useState<Character[]>([]);
+  const [comics, setComics] = useState<Comic[]>([]);
 
   const getComics = async () => {
     const key = 'characters/' + params.id + '/comics'
@@ -78,18 +80,29 @@ const page = ({ params }: PageProps) => {
                 <div className="flex flex-col space-y-1">
                   <p className="text-palette-dark">{characters[0]?.description}</p>
                 </div>
-                <div className="flex flex-col space-y-1">
-                  <span className="text-palette-light">Comics</span>
-                  <span className="text-palette-dark">{characters[0]?.comics?.items?.map((comic) => {
-                    console.log(comic);
 
-                    return (
-                      <div key={comic.name}>{comic.name}</div>
-                    )
-                  }
-                  )}
-                  </span>
-                </div>
+                {comics[0] ? (
+                  <div className="flex flex-col space-y-1">
+                    <span className="mt-4 text-2xl">Comics</span>
+                    <Grid className=' p-4 rounded mb-12 border'>
+
+                      {comics.map((comic) => {
+                        console.log(comic)
+                        return (
+                          <ComicCard comic={comic} />
+                        )
+                      }
+                      )}
+                    </Grid>
+                  </div>
+
+                )
+                  :
+                  <div className="flex flex-col space-y-1">
+                    <span className="text-palette-light">Comics</span>
+                    <span className="text-palette-dark">No comics found</span>
+                  </div>
+                }
 
 
               </div>
