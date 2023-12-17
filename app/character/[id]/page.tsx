@@ -35,18 +35,18 @@ const page = ({ params }: PageProps) => {
     return (
       <>
 
-        <div className=" mt-16 py-12 container mx-auto text-white ">
-         
+        <div className=" mt-16 py-12 container mx-auto text-white min-h-[calc(100vh-124px)] ">
+
           <div className="characterPoster">
-        <div className="characterPosterOverlay"></div>
-        <Image
-          unoptimized
-          src={`${characters[0].thumbnail.path}.${characters[0].thumbnail.extension}`}
-          alt={characters[0].name}
-       
-          fill
-        />
-      </div>
+            <div className="characterPosterOverlay"></div>
+            <Image
+              unoptimized
+              src={`${characters[0].thumbnail.path}.${characters[0].thumbnail.extension}`}
+              alt={characters[0].name}
+
+              fill
+            />
+          </div>
           <div className="flex flex-col  items-center md:flex-row md:items-start space-y-8 md:space-y-0 md:space-x-4 lg:space-x-8  w-11/12 mx-auto">
             <div className="w-full md:w-1/2 max-w-md border border-palette-lighter bg-white rounded shadow-lg">
 

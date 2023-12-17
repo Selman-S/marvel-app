@@ -1,7 +1,9 @@
 
-import HomeContainer from '@/containers/home';
+import HomeContainer from '@/containers/home/homeContainer';
 
 const Home = () => {
+  console.log('home');
+
   return (
     <HomeContainer />
   );

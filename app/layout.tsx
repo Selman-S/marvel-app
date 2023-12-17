@@ -3,8 +3,8 @@ import { Orbitron } from 'next/font/google'
 import './globals.css'
 import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
-import NavBar from '@/components/navbar'
-import { Footer } from '@/components/footer'
+import NavBar from '@/components/navbar/navbar'
+import { Footer } from '@/components/footer/footer'
 const orbitron = Orbitron({  subsets: ['latin'] })
 
 export const metadata: Metadata = {

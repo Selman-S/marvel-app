@@ -1,8 +1,10 @@
-import CharacterList from '@/components/characterList'
-import { Feature } from '@/components/feature'
+import CharacterList from '@/components/characterList/characterList'
+import { Feature } from '@/components/feature/feature'
 import React from 'react'
 
-const HomeContainer = () => {
+const HomeContainer = async () => {
+  console.log('home container');
+
   return (
     <>
 
