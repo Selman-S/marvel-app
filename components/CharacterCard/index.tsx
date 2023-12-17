@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Character } from '../../types/types'; // Assuming you have a Character type defined
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { Skeleton } from '@mui/material';
 
 interface CharacterCardProps {
   character: Character;
@@ -20,8 +21,9 @@ const handleClick = () => {
   router.push(`/character/${character.id}`);
   
 }
-  return (
-    <Card sx={{ maxWidth: 345, m: 2 }} onClick={handleClick}>
+  return (<>
+  {character ? 
+  <Card sx={{ maxWidth: 345, m: 2 }} onClick={handleClick}>
       <CardActionArea>
         <Image
           width={350}
@@ -29,7 +31,7 @@ const handleClick = () => {
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
           className='h-80'
-        />
+          />
         <CardContent className='bg-marvel-red text-white ' >
           <div>
             {character.name}
@@ -38,6 +40,11 @@ const handleClick = () => {
         </CardContent>
       </CardActionArea>
     </Card>
+:
+<Skeleton variant="rectangular" sx={{ maxWidth: 345, m: 2 }} width={320} height={400} />
+}
+    
+          </>
   );
 };
 

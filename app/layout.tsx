@@ -4,6 +4,7 @@ import './globals.css'
 import { CssBaseline } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import NavBar from '@/components/navbar'
+import { Footer } from '@/components/footer'
 const orbitron = Orbitron({  subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -26,10 +27,8 @@ export default function RootLayout({
       <body className={`${orbitron.className} bg-no-repeat bg-marvel-red bg-contain `} >
         <CssBaseline />
         <NavBar />
-        <div className=' '>
-
           <AppRouterCacheProvider >{children}</AppRouterCacheProvider>
-        </div>
+        <Footer />
       </body>
     </html>
   )
