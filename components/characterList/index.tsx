@@ -4,7 +4,8 @@ import { fetchFromMarvel } from '../../utils/marvelApi';
 import CharacterCard from '../CharacterCard';
 import Grid from '@mui/material/Grid';
 import { Character } from '../../types/types';
-import { characters as char} from '../../utils/mockData';
+import { characters as char } from '../../utils/mockData';
+import LoadingSpinner from '../loadingSpinner';
 
 const CharacterList = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -28,15 +29,24 @@ const CharacterList = () => {
     };
     loadCharacters();
   }, []);
+  console.log(characters ? 'true' : 'false');
 
   return (
+
+
     <Grid container justifyContent="center" className='bg-white p-4 rounded'>
-      {characters.map(character => (
-        <Grid item key={character.id} xs={12} sm={6} md={4} lg={3}>
-          <CharacterCard character={character} />
-        </Grid>
-      ))}
+      {characters.map(character => {
+  
+        return (
+
+      <Grid item key={character.id} xs={12} sm={6} md={4} lg={3}>
+        <CharacterCard character={character} />
+        <LoadingSpinner />
+      </Grid>
+      )
+        })}
     </Grid>
+
   )
 }
 
