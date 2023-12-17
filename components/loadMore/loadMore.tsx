@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
-import { fetchFromMarvel } from '../../utils/marvelApi';
+import { fetchFromMarvel } from '../../service/getCharacters';
 import { Character } from '../../types/types';
 import { useInView } from 'react-intersection-observer'
 import LoadingSpinner from '../loadingSpinner/loadingSpinner';

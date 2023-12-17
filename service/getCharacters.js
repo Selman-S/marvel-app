@@ -7,9 +7,9 @@ const privateKey = process.env.NEXT_PUBLIC_MARVEL_PRIVATE_KEY
 
 export const fetchFromMarvel = async (endpoint, key = 0) => {
   console.log(key)
-  const limit = 25
+  const limit = 30
   console.log('limit', limit)
-  const offset = key * 25
+  const offset = key * 30
 
   const ts = new Date().getTime()
   const hash = md5(ts + privateKey + publicKey)

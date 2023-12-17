@@ -1,10 +1,12 @@
 "use client"
 
 import { Character } from '@/types/types';
-import { fetchFromMarvel } from '@/utils/marvelApi';
+import { fetchFromMarvel } from '@/service/getCharacters';
 import React, { useEffect, useState } from 'react';
 import { character as char } from '../../../utils/mockData'
 import Image from 'next/image';
+import { Skeleton } from '@mui/material';
+import { fetchComics } from './../../../service/getComics';
 
 interface PageProps {
   params: {
@@ -13,28 +15,39 @@ interface PageProps {
 }
 
 const page = ({ params }: PageProps) => {
-  const [characters, setCharacters] = useState<Character[]>([]); // Update the type of characters to be an array of Character objects
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [comics, setComics] = useState<Character[]>([]);
+
+  const getComics = async () => {
+    const key = 'characters/' + params.id + '/comics'
+    const results = await fetchFromMarvel(key);
+    setComics(results);
+    console.log(results);
+  }
+
   useEffect(() => {
     const loadCharacters = async () => {
-      // const key = 'characters/'+params.id
-      //  const results = await fetchFromMarvel(key);
-      //  setCharacters(results);
-      //  console.log(results);
-
-      console.log(char.data.results);
-      setCharacters(char.data.results as unknown as Character[]);
+      const key = 'characters/' + params.id
+      const results = await fetchFromMarvel(key);
+      setCharacters(results);
+      console.log(results);
+      getComics();
+      // console.log(char.data.results);
+      // setCharacters(char.data.results as unknown as Character[]);
     };
     loadCharacters();
+
+
+
+
   }, []);
   console.log(characters[0]?.thumbnail?.path);
 
-  if (!characters[0]) {
-    return <div>error</div>
-  } else {
 
-    return (
-      <>
 
+  return (
+    <>
+      {characters[0] ?
         <div className=" mt-16 py-12 container mx-auto text-white min-h-[calc(100vh-124px)] ">
 
           <div className="characterPoster">
@@ -67,36 +80,36 @@ const page = ({ params }: PageProps) => {
                 </div>
                 <div className="flex flex-col space-y-1">
                   <span className="text-palette-light">Comics</span>
-                  <span className="text-palette-dark">{characters[0]?.comics?.items?.map((comic) => (
-                    <div key={comic.name}>{comic.name}</div>
-                  ))}</span>
+                  <span className="text-palette-dark">{characters[0]?.comics?.items?.map((comic) => {
+                    console.log(comic);
+
+                    return (
+                      <div key={comic.name}>{comic.name}</div>
+                    )
+                  }
+                  )}
+                  </span>
                 </div>
-                <div className="flex flex-col space-y-1">
-                  <span className="text-palette-light">Series</span>
-                  <span className="text-palette-dark">{characters[0]?.series?.items?.map((serie) => (
-                    <div key={serie.name}>{serie.name}</div>
-                  ))}</span>
-                </div>
-                <div className="flex flex-col space-y-1">
-                  <span className="text-palette-light">Stories</span>
-                  <span className="text-palette-dark">{characters[0]?.stories?.items?.map((story) => (
-                    <div key={story.name}>{story.name}</div>
-                  ))}</span>
-                </div>
-                <div className="flex flex-col space-y-1">
-                  <span className="text-palette-light">Events</span>
-                  <span className="text-palette-dark">{characters[0]?.events?.items?.map((event) => (
-                    <div key={event.name}>{event.name}</div>
-                  ))}</span>
-                </div>
+
 
               </div>
             </div>
           </div>
         </div>
-      </>
-    )
-  }
+        :
+
+        <div className=" mt-16 py-12 container mx-auto text-white min-h-[calc(100vh-124px)] ">
+
+          <Skeleton variant="rectangular" sx={{ maxWidth: 400, m: 2, with: 1 }} height={400} />
+
+
+
+        </div>
+
+      }
+    </>
+  )
+
 }
 
 export default page

@@ -1,14 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react';
-import { fetchFromMarvel } from '../../utils/marvelApi';
-import CharacterCard from '../CharacterCard/characterCard';
+import { fetchFromMarvel } from '../../service/getCharacters';
 import Grid from '@mui/material/Grid';
 import { Character } from '../../types/types';
-import { characters as char } from '../../utils/mockData';
 import { Box, Skeleton } from '@mui/material';
-import { characters } from '../../utils/mockData';
-import { useInView } from 'react-intersection-observer'
-import LoadingSpinner from '../loadingSpinner/loadingSpinner';
 import Characters from '../caracters/characters';
 import LoadMore from '../loadMore/loadMore';
 
