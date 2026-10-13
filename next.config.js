@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
   images: {
-    domains: ['i.annihil.us'],
+    // Allow Marvel CDN thumbnails through next/image.
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.annihil.us',
+      },
+    ],
   },
   reactStrictMode: false,
 }
