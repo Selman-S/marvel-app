@@ -35,9 +35,9 @@ const NavBar: React.FC = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontFamily: 'var(--font-familyOrbitron)' }}>
           Marvel Universe
         </Typography>
-        <Link href="/" passHref>
-          <Button color="inherit" sx={{ fontFamily: 'var(--font-familyOrbitron)' }}>Home</Button>
-        </Link>
+        <Button component={Link} href="/" color="inherit" sx={{ fontFamily: 'var(--font-familyOrbitron)' }}>
+          Home
+        </Button>
         {/* Add more navigation links here */}
       </Toolbar>
     </AppBar>

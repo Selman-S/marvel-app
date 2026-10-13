@@ -1,10 +1,12 @@
-import Image from 'next/image'
 import React from 'react'
 
 export const Feature = () => {
   return (
 
-    <div className='h-96 bg-no-repeat bg-contain -z-2  text-white' style={{ background: `url(/images/marvel_bg.jpg)` }} >
+    <div
+      className="h-96 bg-no-repeat bg-cover bg-center text-white"
+      style={{ backgroundImage: 'url(/images/marvel_bg.jpg)' }}
+    >
 
       <p className="container mx-auto pt-24  p-8 max-w-4xl lg:text-2xl">
         <span className="quote">

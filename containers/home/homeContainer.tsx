@@ -3,8 +3,6 @@ import { Feature } from '@/components/feature/feature'
 import React from 'react'
 
 const HomeContainer = async () => {
-  console.log('home container');
-
   return (
     <>
 

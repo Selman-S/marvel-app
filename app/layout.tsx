@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Orbitron } from 'next/font/google'
 import './globals.css'
 import { CssBaseline } from '@mui/material'
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter'
 import NavBar from '@/components/navbar/navbar'
 import { Footer } from '@/components/footer/footer'
 const orbitron = Orbitron({  subsets: ['latin'] })
@@ -25,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${orbitron.className} bg-no-repeat bg-marvel-red bg-contain `} >
-        <CssBaseline />
-        <NavBar />
-          <AppRouterCacheProvider >{children}</AppRouterCacheProvider>
-        <Footer />
+        <AppRouterCacheProvider>
+          <CssBaseline />
+          <NavBar />
+          {children}
+          <Footer />
+        </AppRouterCacheProvider>
       </body>
     </html>
   )

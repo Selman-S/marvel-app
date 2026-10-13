@@ -1,50 +1,35 @@
 import React from 'react';
 import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { Character } from '../../types/types'; // Assuming you have a Character type defined
+import { Character } from '../../types/types';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { Skeleton } from '@mui/material';
+import Link from 'next/link';
+import { marvelImage } from '@/utils/marvelImage';
 
 interface CharacterCardProps {
   character: Character;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
-  const router = useRouter();
-const handleClick = () => {
-  console.log('clicked');
-  console.log(character);
-  router.push(`/character/${character.id}`);
-  
-}
-  return (<>
-  {character ? 
-  <Card sx={{ maxWidth: 345, m: 2 }} onClick={handleClick}>
-      <CardActionArea>
-        <Image
-          width={350}
-          height={200}
-          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-          alt={character.name}
-          className='h-80'
+  const src = marvelImage(character.thumbnail?.path, character.thumbnail?.extension);
+
+  return (
+    <Link href={`/character/${character.id}`} className="block max-w-[345px] m-2">
+      <Card>
+        {src ? (
+          <Image
+            width={350}
+            height={320}
+            src={src}
+            alt={character.name}
+            className="h-80 w-full object-cover"
           />
-        <CardContent className='bg-marvel-red text-white ' >
-          <div>
-            {character.name}
-          </div>
-          {/* You can add more character details here */}
+        ) : null}
+        <CardContent className="bg-marvel-red text-white">
+          <div>{character.name}</div>
         </CardContent>
-      </CardActionArea>
-    </Card>
-:
-<Skeleton variant="rectangular" sx={{ maxWidth: 345, m: 2 }} width={320} height={400} />
-}
-    
-          </>
+      </Card>
+    </Link>
   );
 };
 

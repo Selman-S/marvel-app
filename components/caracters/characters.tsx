@@ -10,8 +10,6 @@ export interface ICharacter {
 
 
 const Characters = ({ characters }: ICharacter) => {
-  console.log(characters);
-
   return (
     <>
       {characters.map((character) => (
